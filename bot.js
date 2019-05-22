@@ -19,20 +19,6 @@ logger.info('Logged in as: ');
 logger.info(bot.username + ' – (' + bot.id + ')');
 bot.setPresence({game: {name: "with fire", type: 0}});
 });
-
-var facts = ['If your profile picture is from an anime, your opinion doesn\'t count.',
-			'Banging your head against a wall for one hour burns 150 calories.',
-			'In Switzerland it is illegal to own just one guinea pig.',
-			'A flock of crows is known as a murder.',
-			'Rats and horses can\'t vomit.',
-			'Most lipstick contains fish scales.',
-			'Like fingerprints, everyone\'s tongue print is different.',
-			'Hot water is heavier than cold.',
-			'Adolf Hitler was a vegetarian.',
-			'A cat\'s urine glows under a black light.',
-			'Polar bears are left-handed.',
-			'Slugs have 4 noses',
-			'A pig\'s orgasm last 30 minutes']
 			
 var rate = Array.apply(null, Array(facts.length)).map(Number.prototype.valueOf,0);
 
@@ -119,20 +105,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				break;
 				
-				case 'smd':
-				bot.sendMessage({
-					to: channelID,
-					message: 'i dont fuck with micro pinesies'
-					});
-				break;
-				
-				case 'hmm':
-				bot.sendMessage({
-					to: channelID,
-					message: 'scream STFU if you gay!'
-					});
-				break;
-				
 				case 'sayhi':
 				bot.sendMessage({
 					to: channelID,
@@ -152,28 +124,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				break;
 				
-				case 'fact':
-				var value = Math.floor(Math.random() * facts.length);
-				var rand = facts[value];
-				
-				var x = 0;
-				var y = 0;
-				while(x < rate.length ){
-					y += rate[x];
-					x++;
-				}
-				y = y/rate.length;
-				
-				while(rate[value] > y){
-					var value = Math.floor(Math.random() * facts.length);
-					var rand = facts[value];
-				}
-				rate[value] = rate[value] + 1;
-				bot.sendMessage({
-					to: channelID,
-					message: rand + ' [' + rate[value] + ']'
-					});
-				break;
 				
 				case 'pick':
 				var x = Math.round(Math.random());
@@ -188,12 +138,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				break;
 				
-				case 'truth':
-				 bot.uploadFile({
-					to: channelID,
-					file: "pics/truth.jpg"
-					},function(){});
-				break;
 				
 				case 'advice':
 				 bot.sendMessage({
